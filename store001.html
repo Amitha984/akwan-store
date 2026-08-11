@@ -3,54 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Akwan Store - Free Software</title>
-  <link rel="stylesheet" href="apps.css">
+  <title>Akwan Store</title>
+  <link rel="stylesheet" href="store001.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
   <!-- Navigation Bar -->
   <header class="navbar">
-    <div class="logo" onclick="window.location.href='store001.html'">
+    <div class="logo">
       <i class="fa-solid fa-cube"></i> AKWAN STORE
     </div>
     <nav class="nav-links">
       <a href="store001.html">Home</a>
-      <a href="apps.html" class="active">Software</a>
+      <a href="apps.html">Software</a>
       <a href="games.html">Games</a>
       <a href="support.html">Customer Care</a>
     </nav>
-     <!-- මේක තමයි Navbar එකේ තියෙන Icon එක -->
+  <!-- මේක තමයි Navbar එකේ තියෙන Icon එක -->
 <div class="history-icon" onclick="toggleHistory()" style="cursor: pointer;">
     <i class="fa-solid fa-clock-rotate-left"></i> History
     <span id="history-count">0</span>
 </div>
   </header>
 
-  <!-- Software Hero -->
+  <!-- Hero & Search Section -->
   <section class="hero">
-    <h1>Free Software & Applications</h1>
-    <p>Browse productivity tools, development tools, and utility software.</p>
+    <h1>Free Software & Games Marketplace</h1>
+    <p>Discover and download the best applications and games for free.</p>
     <div class="search-box">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" id="searchInput" placeholder="Search software..." onkeyup="filterSoftware()">
+      <input type="text" id="searchInput" placeholder="Search for apps or games..." onkeyup="filterItems()">
     </div>
   </section>
 
-  <!-- Software Grid Container -->
-  <main class="grid-container" id="softwareGrid"></main>
+  <!-- Category Filter Buttons -->
+  <div class="categories">
+    <button class="cat-btn active" onclick="filterCategory('all', this)">All</button>
+    <button class="cat-btn" onclick="filterCategory('software', this)">Software</button>
+    <button class="cat-btn" onclick="filterCategory('games', this)">Games</button>
+  </div>
 
-  <!-- Detail Pop-up Modal -->
+  <!-- Content Grid -->
+  <main class="grid-container" id="itemGrid">
+    <!-- Items generated via JavaScript -->
+  </main>
+
+  <!-- Detail Pop-up Modal (Photo 2 Design) -->
   <div id="itemModal" class="modal">
     <div class="modal-content">
       <span class="close-btn" onclick="closeModal()">&times;</span>
       <div class="modal-body">
-        <div class="modal-left" id="modalIcon"></div>
+        <div class="modal-left" id="modalIcon">
+          <i class="fa-solid fa-code"></i>
+        </div>
         <div class="modal-right">
-          <span class="tag" id="modalCategory"></span>
-          <h2 id="modalTitle"></h2>
-          <p id="modalDesc"></p>
-          <ul class="features-list" id="modalFeatures"></ul>
+          <span class="tag" id="modalCategory">DEVELOPMENT</span>
+          <h2 id="modalTitle">CodeMaster Pro</h2>
+          <p id="modalDesc">Advanced IDE with AI-powered code completion and tools.</p>
+          <ul class="features-list" id="modalFeatures">
+            <li><i class="fa-solid fa-check"></i> High Performance</li>
+            <li><i class="fa-solid fa-check"></i> Offline Support</li>
+          </ul>
           <div class="modal-price-row">
             <span class="price-free">FREE</span>
             <button class="btn-primary" id="modalAddBtn">
@@ -62,7 +76,7 @@
     </div>
   </div>
 
-   <!-- Slide-out Cart Panel -->
+  <!-- Slide-out Cart Panel -->
   <div id="cartPanel" class="cart-panel">
     <div class="cart-header">
       <h3>Your Downloads</h3>
@@ -71,26 +85,20 @@
     <div class="cart-items" id="cartItems">
       <p class="empty-msg">Your cart is empty.</p>
     </div>
-   <div class="cart-items" id="cartItems"></div>
-       <div class="cart-footer">
+    <div class="cart-footer">
       <button class="btn-primary download-all-btn" onclick="toggleHistory(); window.location.href=`index.html`;">
         <i class="fa-solid fa-download"></i> Download Other File
       </button>
     </div>
-    </div>
   </div>
-  <script src="script.js"></script>
-  <script>
-    // Initial Load for Software Page
-    document.addEventListener("DOMContentLoaded", () => {
-      renderPageItems('software', 'softwareGrid');
-    });
 
-    function filterSoftware() {
-      const q = document.getElementById('searchInput').value.toLowerCase();
-      const filtered = items.filter(i => i.type === 'software' && (i.title.toLowerCase().includes(q) || i.category.toLowerCase().includes(q)));
-      renderGridData(filtered, 'softwareGrid');
-    }
-  </script>
+  <!-- Customer Care Section -->
+  <footer id="support" class="support-footer">
+    <h3><i class="fa-solid fa-headset"></i> Customer Care Support</h3>
+    <p>Need help with installation or broken links? Contact our support team 24/7.</p>
+    <p>Email: <strong>support@apphub.com</strong> | Live Chat Available</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
