@@ -70,6 +70,31 @@ body {
   transition: transform 0.3s ease;
 }
 
+.card-footer .btn-get, 
+button.btn-get {
+  background-color: #007aff !important; /* Blue Color */
+  color: #ffffff !important;
+  border: none !important;
+  padding: 8px 18px !important;
+  border-radius: 20px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+/* Hover කළ විට */
+.card-footer .btn-get:hover, 
+button.btn-get:hover {
+  background-color: #0056b3 !important;
+  transform: scale(1.05);
+}
+
+.card:hover .card-img {
+  transform: scale(1.05);
+}
+
 .card:hover .card-img {
   transform: scale(1.05);
 }
