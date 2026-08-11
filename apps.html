@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akwan Store - Free Software</title>
+  <link rel="stylesheet" href="apps.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo" onclick="window.location.href='store001.html'">
+      <i class="fa-solid fa-cube"></i> AKWAN STORE
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="apps.html" class="active">Software</a>
+      <a href="games.html">Games</a>
+      <a href="support.html">Customer Care</a>
+    </nav>
+     <!-- මේක තමයි Navbar එකේ තියෙන Icon එක -->
+<div class="history-icon" onclick="toggleHistory()" style="cursor: pointer;">
+    <i class="fa-solid fa-clock-rotate-left"></i> History
+    <span id="history-count">0</span>
+</div>
+  </header>
+
+  <!-- Software Hero -->
+  <section class="hero">
+    <h1>Free Software & Applications</h1>
+    <p>Browse productivity tools, development tools, and utility software.</p>
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Search software..." onkeyup="filterSoftware()">
+    </div>
+  </section>
+
+  <!-- Software Grid Container -->
+  <main class="grid-container" id="softwareGrid"></main>
+
+  <!-- Detail Pop-up Modal -->
+  <div id="itemModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <div class="modal-body">
+        <div class="modal-left" id="modalIcon"></div>
+        <div class="modal-right">
+          <span class="tag" id="modalCategory"></span>
+          <h2 id="modalTitle"></h2>
+          <p id="modalDesc"></p>
+          <ul class="features-list" id="modalFeatures"></ul>
+          <div class="modal-price-row">
+            <span class="price-free">FREE</span>
+            <button class="btn-primary" id="modalAddBtn">
+              <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Slide-out Cart Panel -->
+  <div id="cartPanel" class="cart-panel">
+    <div class="cart-header">
+      <h3>Your Downloads</h3>
+      <span class="close-btn" onclick="toggleHistory()">&times;</span>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-msg">Your cart is empty.</p>
+    </div>
+   <div class="cart-items" id="cartItems"></div>
+       <div class="cart-footer">
+      <button class="btn-primary download-all-btn" onclick="toggleHistory(); window.location.href=`index.html`;">
+        <i class="fa-solid fa-download"></i> Download Other File
+      </button>
+    </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Initial Load for Software Page
+    document.addEventListener("DOMContentLoaded", () => {
+      renderPageItems('software', 'softwareGrid');
+    });
+
+    function filterSoftware() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = items.filter(i => i.type === 'software' && (i.title.toLowerCase().includes(q) || i.category.toLowerCase().includes(q)));
+      renderGridData(filtered, 'softwareGrid');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Akwan Store - Customer Care</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="support.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo" onclick="window.location.href='store001.html'">
+      <i class="fa-solid fa-cube"></i> AKWAN STORE
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="apps.html">Software</a>
+      <a href="games.html">Games</a>
+      <a href="support.html" class="active">Customer Care</a>
+    </nav>
+      <!-- මේක තමයි Navbar එකේ තියෙන Icon එක -->
+<div class="history-icon" onclick="toggleHistory()" style="cursor: pointer;">
+    <i class="fa-solid fa-clock-rotate-left"></i> History
+    <span id="history-count">0</span>
+</div>
+  </header>
+
+  <!-- Support Form Section -->
+  <section class="support-container">
+    <h2><i class="fa-solid fa-headset"></i> Customer Support</h2>
+    <p>Having trouble downloading or installing? Send us a direct message!</p>
+    
+    <div class="support-form">
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" id="custName" placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label>Issue Type</label>
+        <select id="custIssue">
+          <option value="Broken Link">Broken Download Link</option>
+          <option value="Installation Help">Installation Assistance</option>
+          <option value="App Request">Request a New App/Game</option>
+          <option value="Other">Other Inquiry</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea id="custMessage" rows="4" placeholder="Describe your issue or app name..."></textarea>
+      </div>
+      
+      <div class="support-buttons">
+        <button class="btn-whatsapp" onclick="sendWhatsApp()">
+          <i class="fa-brands fa-whatsapp"></i> Send via WhatsApp
+        </button>
+        <button class="btn-messenger" onclick="sendMessenger()">
+          <i class="fa-brands fa-facebook-messenger"></i> Send via Messenger
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart Panel -->
+  <div id="cartPanel" class="cart-panel">
+    <div class="cart-header">
+      <h3>Your Downloads</h3>
+      <span class="close-btn" onclick="toggleCart()">&times;</span>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+       <div class="cart-footer">
+      <button class="btn-primary download-all-btn" onclick="toggleHistory(); window.location.href=`index.html`;">
+        <i class="fa-solid fa-download"></i> Download Other File
+      </button>
+    </div>
+  </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
