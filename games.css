@@ -95,10 +95,6 @@ button.btn-get:hover {
   transform: scale(1.05);
 }
 
-.card:hover .card-img {
-  transform: scale(1.05);
-}
-
 #cart-count {
   position: absolute;
   top: -8px;
